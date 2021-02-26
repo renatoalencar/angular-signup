@@ -1,0 +1,53 @@
+<form [@openClose]="isOpen ? 'open' : 'closed'" #form="ngForm" (ngSubmit)="onSubmit($event)" passwordConfirmation>
+  <h1>Sign Up</h1>
+
+  <p>The box is now {{ isOpen ? 'open' : 'closed' }}!</p>
+
+  <input
+    type="text"
+    name="cpf"
+    [(ngModel)]="customer.cpf"
+    mask="000.000.000-00"
+    placeholder="123.456.789-00"
+    cpf
+    required
+    matInput
+  />
+  <input
+    type="text"
+    name="login"
+    [(ngModel)]="customer.login"
+    pattern="[a-zA-Z0-9\.\-_]+"
+    placeholder="fulano.silva"
+    required
+    matInput
+  />
+
+  <input
+    type="text"
+    name="name"
+    [(ngModel)]="customer.name"
+    placeholder="Fulano da Silva"
+    required
+    matInput
+  />
+  <input
+    type="password"
+    name="password"
+    [(ngModel)]="customer.password"
+    minlength="8"
+    placeholder="Senha"
+    required
+    matInput
+  />
+  <input
+    type="password"
+    name="confirmPassword"
+    [(ngModel)]="confirmPassword"
+    placeholder="Mesma senha"
+    required
+    matInput
+  />
+
+  <button mat-raised-button color="primary" type="submit">Go</button>
+</form>
