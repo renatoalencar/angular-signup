@@ -1,10 +1,90 @@
+
+
 form {
     max-width: 750px;
     margin: auto;
-    border: 1px solid #dddddd;
+    border: 1px solid var(--text-color);
     margin-top: 1em;
-    padding: 20px 20px 0px 20px;
-    color: #000000;
-    font-weight: bold;
-    font-size: 20px;
+    padding: 20px;
+
+    --font-size: 16px;
+}
+
+.form-control {
+    display: block;
+    margin: 1em 0;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: 0.5em;
+}
+
+input {
+    box-shadow: 0px 0px 2px 2px rgba(0,48,73,0.10);
+
+    border: 1px solid rgba(0,48,73,0.10);
+    padding: 1em;
+
+    width: calc(100% - 2em);
+}
+
+input:active {
+    outline: none;
+}
+
+input:focus {
+    border: 1px solid var(--primary-color);
+}
+
+button {
+    font-size: 1em;
+    font-weight: 800;
+
+    color: var(--contrast-text-color);
+    background: var(--primary-color);
+
+    padding: 0.6em 1.8em;
+    border: 0;
+
+    transition: transform ease 0.15s;
+
+    min-width: calc(9em);
+}
+
+button:hover {
+    transform: scale(1.02);
+}
+
+button.success {
+    background: var(--success-color);
+}
+
+.error {
+    margin-top: 0.4em;
+    font-size: 0.8em;
+    color: var(--error-color);
+}
+
+input.ng-touched.ng-invalid {
+    border: 1px solid var(--error-color);
+}
+
+input.ng-touched.ng-valid {
+    border: 1px solid var(--success-color);
+}
+
+
+@keyframes spin {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.spinner {
+    animation: spin 1s ease-in-out infinite forwards;
 }

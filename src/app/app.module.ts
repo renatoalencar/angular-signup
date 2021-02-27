@@ -10,6 +10,7 @@ import { SignupFormComponent } from './signup-form/signup-form.component';
 import { CpfDirective } from './cpf.directive';
 import { PasswordConfirmationDirective } from './signup-form/password-confirmation.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ShowPasswordButtonComponent } from './show-password-button/show-password-button.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SignupFormComponent,
     CpfDirective,
     PasswordConfirmationDirective,
+    ShowPasswordButtonComponent,
   ],
   imports: [
     BrowserModule,

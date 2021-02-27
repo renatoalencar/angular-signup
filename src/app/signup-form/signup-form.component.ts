@@ -1,6 +1,14 @@
-import { animate, state, style, transition, trigger } from '@angular/animations';
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { of } from 'rxjs';
+import { delay, tap } from 'rxjs/operators';
 import { Customer } from '../customer';
 
 @Component({
@@ -8,40 +16,49 @@ import { Customer } from '../customer';
   templateUrl: './signup-form.component.html',
   styleUrls: ['./signup-form.component.css'],
   animations: [
-    trigger('openClose', [
-      state('open', style({
-        height: '200px',
-        opacity: 1,
-        background: 'yellow'
-      })),
-      state('closed', style({
-        height: '100px',
-        opacity: 0.5,
-        background: 'green'
-      })),
-      transition('open => closed', [
-        animate('1s')
-      ]),
-      transition('closed => open', [
-        animate('0.5s')
-      ])
-    ])
-  ]
+    trigger('loadingSuccess', [
+      state(
+        'idle',
+        style({
+          display: 'none',
+        })
+      ),
+      state(
+        'loading',
+        style({
+          width: 0,
+          height: 0,
+        })
+      ),
+      state(
+        'success',
+        style({
+          width: 18,
+          height: 18,
+        })
+      ),
+      transition('* => success', [animate('0.7s cubic-bezier(0, 0.4, 0.9, 1)')]),
+    ]),
+  ],
 })
 export class SignupFormComponent {
   customer: Customer = new Customer(null, null, null, null);
   confirmPassword: string = null;
   @ViewChild('form') form: NgForm;
 
-  isOpen = true;
+  // idle loading success error
+  state = 'idle';
+
+  showPassword = false;
 
   onSubmit(event) {
-    console.log(event);
-    console.log(this.customer);
-    this.toggle();
+    of(this.customer)
+      .pipe(tap(() => (this.state = 'loading')))
+      .pipe(delay(3000))
+      .subscribe(() => (this.state = 'success'));
   }
 
-  toggle() {
-    this.isOpen = !this.isOpen;
+  onShowPassword(show: boolean) {
+    this.showPassword = show;
   }
 }

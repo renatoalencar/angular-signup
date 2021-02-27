@@ -1,5 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~@angular/material/prebuilt-themes/purple-green.css';
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; font-size: 22px; }
+:root {
+  --color-1: #003049;
+  --color-2: #d62828;
+  --color-3: #f77f00;
+  --color-4: #fcbf49;
+  --color-5: #eae2b7;
+  --color-6: #14C493;
+
+  --error-color: var(--color-2);
+  --success-color: var(--color-6);
+
+  --text-color: var(--color-1);
+  --contrast-text-color: var(--color-5);
+  --primary-color: var(--color-3);
+  --secondary-color: var(--color-4);
+
+  --font-size: 22px;
+
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: var(--font-size);
+  color: var(--text-color);
+}
+
+h1, h2, h3, h4, h5 {
+    font-weight: 900;
+}
